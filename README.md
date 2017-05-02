@@ -6,7 +6,7 @@ The code kata subject can be found [at this link](https://www.codewars.com/kata/
 
 ## Usage
 
-Install dependencies
+Install dependencies (requires PHP > 7.1)
 ```
 $ composer install>
 ```
