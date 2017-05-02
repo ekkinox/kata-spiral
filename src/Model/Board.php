@@ -2,6 +2,7 @@
 
 namespace Ekkinox\KataSpiral\Model;
 
+use Ekkinox\KataSpiral\Factory\SlotFactory;
 use InvalidArgumentException;
 
 /**
@@ -9,6 +10,11 @@ use InvalidArgumentException;
  */
 class Board implements DrawableInterface
 {
+    /**
+     * @var SlotFactory
+     */
+    private $slotFactory;
+
     /**
      * @var int
      */
@@ -25,15 +31,17 @@ class Board implements DrawableInterface
     private $slotsMap;
 
     /**
-     * @param int $width
-     * @param int $height
+     * @param SlotFactory $slotFactory
+     * @param int         $width
+     * @param int         $height
      */
-   public function __construct(int $width, int $height)
+   public function __construct(SlotFactory $slotFactory, int $width, int $height)
    {
-       $this->width  = $width;
-       $this->height = $height;
+       $this->slotFactory = $slotFactory;
+       $this->width       = $width;
+       $this->height      = $height;
 
-       $this->initializeSlotsMap();
+       $this->initSlotsMap();
    }
 
     /**
@@ -73,14 +81,19 @@ class Board implements DrawableInterface
     /**
      * @return Board
      */
-   private function initializeSlotsMap(): self
+   private function initSlotsMap(): self
    {
        $this->slotsMap = [];
 
        for ($x = 0; $x < $this->width; $x++) {
+
            $this->slotsMap[$x] = [];
+
            for ($y = 0; $y < $this->height; $y++) {
-               $this->slotsMap[$x][$y] = new Slot();
+
+               $slot = $this->slotFactory->create();
+               $this->slotsMap[$x][$y] = $slot->setX($x)->setY($y);
+
            }
        }
 

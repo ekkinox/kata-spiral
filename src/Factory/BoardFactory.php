@@ -10,13 +10,14 @@ use Ekkinox\KataSpiral\Model\Board;
 class BoardFactory
 {
     /**
-     * @param int $width
-     * @param int $height
+     * @param SlotFactory $slotFactory
+     * @param int         $width
+     * @param int         $height
      *
      * @return Board
      */
-    public function create(int $width, int $height): Board
+    public function create(SlotFactory $slotFactory, int $width, int $height): Board
     {
-        return new Board($width, $height);
+        return new Board($slotFactory, $width, $height);
     }
 }

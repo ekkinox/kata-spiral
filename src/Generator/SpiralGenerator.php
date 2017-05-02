@@ -3,6 +3,7 @@
 namespace Ekkinox\KataSpiral\Generator;
 
 use Ekkinox\KataSpiral\Factory\BoardFactory;
+use Ekkinox\KataSpiral\Factory\SlotFactory;
 use Ekkinox\KataSpiral\Model\Board;
 
 /**
@@ -21,11 +22,18 @@ class SpiralGenerator
     private $boardFactory;
 
     /**
-     * @param BoardFactory $boardFactory
+     * @var SlotFactory
      */
-   public function __construct(BoardFactory $boardFactory)
+    private $slotFactory;
+
+    /**
+     * @param BoardFactory $boardFactory
+     * @param SlotFactory  $slotFactory
+     */
+   public function __construct(BoardFactory $boardFactory, SlotFactory $slotFactory)
    {
         $this->boardFactory = $boardFactory;
+        $this->slotFactory  = $slotFactory;
    }
 
     /**
@@ -36,7 +44,7 @@ class SpiralGenerator
      */
    public function generate(int $width, int $height): Board
    {
-       $board = $this->boardFactory->create($width, $height);
+       $board = $this->boardFactory->create($this->slotFactory, $width, $height);
 
        $board->useSlot(0,0);
        $board->useSlot(0,1);
