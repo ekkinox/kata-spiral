@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Ekkinox\KataSpiral\Command\SpiralGeneratorCommand;
+use Ekkinox\KataSpiral\Factory\BoardFactory;
+use Ekkinox\KataSpiral\Generator\SpiralGenerator;
+use Symfony\Component\Console\Application;
+
+$application  = new Application();
+$command      = new SpiralGeneratorCommand(new SpiralGenerator(new BoardFactory()));
+
+$application->add($command);
+$application->setDefaultCommand(SpiralGeneratorCommand::NAME, true);
+
+$application->run();

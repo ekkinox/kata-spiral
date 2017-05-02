@@ -1,0 +1,29 @@
+{
+    "name": "ekkinox/kata-spiral",
+    "description": "Code kata - Spiral Drawer",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan VUILLEMIN",
+            "email": "ekkinox@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ekkinox\\KataSpiral\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ekkinox\\KataSpiral\\Test\\": "test/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "symfony/console": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    }
+}
