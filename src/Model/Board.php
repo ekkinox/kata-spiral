@@ -67,16 +67,46 @@ class Board implements DrawableInterface
      * @param int $x
      * @param int $y
      *
+     * @return Slot
+     */
+    public function getSlot(int $x, int $y): Slot
+    {
+        if ($this->validatePosition($x, $y)) {
+            return $this->slotsMap[$y][$x];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param int $x
+     * @param int $y
+     *
      * @return Board
      */
    public function useSlot(int $x, int $y): self
    {
         if ($this->validatePosition($x, $y)) {
-            ($this->slotsMap[$x][$y])->setUsed(true);
+            ($this->slotsMap[$y][$x])->setUsed(true);
         }
 
         return $this;
    }
+
+    /**
+     * @param int $x
+     * @param int $y
+     *
+     * @return Board
+     */
+    public function freeSlot(int $x, int $y): self
+    {
+        if ($this->validatePosition($x, $y)) {
+            ($this->slotsMap[$y][$x])->setUsed(false);
+        }
+
+        return $this;
+    }
 
     /**
      * @return Board
@@ -85,14 +115,14 @@ class Board implements DrawableInterface
    {
        $this->slotsMap = [];
 
-       for ($x = 0; $x < $this->width; $x++) {
+       for ($y = 0; $y < $this->height; $y++) {
 
-           $this->slotsMap[$x] = [];
+           $this->slotsMap[$y] = [];
 
-           for ($y = 0; $y < $this->height; $y++) {
+           for ($x = 0; $x < $this->width; $x++) {
 
                $slot = $this->slotFactory->create();
-               $this->slotsMap[$x][$y] = $slot->setX($x)->setY($y);
+               $this->slotsMap[$y][$x] = $slot->setX($x)->setY($y);
 
            }
        }
@@ -112,13 +142,13 @@ class Board implements DrawableInterface
    {
        if ($x > $this->width - 1) {
            throw new InvalidArgumentException(
-               sprintf('X position %s is out of bounds (0 < x < %s)', $x, $this->width -1)
+               sprintf('X position %s is out of bounds (0 < x < %s)', $x, $this->width - 1)
            );
        }
 
        if ($y > $this->height - 1) {
            throw new InvalidArgumentException(
-               sprintf('Y position %s is out of bounds (0 < y < %s)', $y, $this->height -1)
+               sprintf('Y position %s is out of bounds (0 < y < %s)', $y, $this->height - 1)
            );
        }
 

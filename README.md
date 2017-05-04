@@ -8,12 +8,12 @@ The code kata subject can be found [at this link](https://www.codewars.com/kata/
 
 Install dependencies (requires PHP > 7.1)
 ```
-$ composer install>
+$ composer install
 ```
 
 You can run spiral generator using
 ```
-$ bin/spiral-generator <width> <height>
+$ bin/spiral-generator <width> <height> <way>
 ```
 
 ## Docker usage
@@ -25,5 +25,5 @@ $ docker run --rm --interactive --tty --volume $PWD:/app composer install
 
 You can run spiral generator using dockerized fpm-7.1
 ```
-$ docker run -it --rm --name spiral-generator -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:7.1-cli php bin/spiral-generator <width> <height>
+$ docker run -it --rm --name spiral-generator -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:7.1-cli php bin/spiral-generator <width> <height> <way>
 ```
