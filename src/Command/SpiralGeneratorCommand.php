@@ -79,8 +79,7 @@ class SpiralGeneratorCommand extends Command
 
         $output->writeln(
             [
-                sprintf('Spiral Generator (%s x %s)', $width, $height),
-                '=========================',
+                sprintf('Spiral Generator (%sx%s, %s)', $width, $height, $way),
                 ''
             ]
         );
