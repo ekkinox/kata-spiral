@@ -16,6 +16,11 @@ You can run spiral generator using
 $ bin/spiral-generator <width> <height> <way>
 ```
 
+Parameters:
+- width: width of the spiral (integer, > 5)
+- height: height of the spiral (integer, > 5)
+- way: drawing way of the spiral (string, 'clockwise' or 'anticlockwise')
+
 ## Docker usage
 
 Install dependencies with dockerized composer
