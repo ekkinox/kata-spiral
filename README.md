@@ -17,9 +17,9 @@ $ bin/spiral-generator <width> <height> <way>
 ```
 
 Parameters:
-- width: width of the spiral (integer, > 5)
-- height: height of the spiral (integer, > 5)
-- way: drawing way of the spiral (string, 'clockwise' or 'anticlockwise')
+- **width**: width of the spiral (integer, > 5)
+- **height**: height of the spiral (integer, > 5)
+- **way**: drawing way of the spiral (string, 'clockwise' or 'anticlockwise', default is 'clockwise')
 
 ## Docker usage
 
